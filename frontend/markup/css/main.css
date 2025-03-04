@@ -402,10 +402,6 @@ body {
 
 /* Header */
 
-.header {}
-
-.container {}
-
 .header .container {
   display: flex;
   gap: 15px;
@@ -439,7 +435,7 @@ body {
   border-radius: 10px;
   border: none;
   outline: none;
-  width: 745px;
+  width: 720px;
 }
 
 .header__city-search:focus {
@@ -468,7 +464,6 @@ body {
 
 .header__btn-img {
   width: 15px;
-
 }
 
 .header__support-btn {
@@ -494,5 +489,58 @@ body {
 }
 
 /* Main section */
+
+.main {}
+
+.container {}
+
+.overview {}
+
+.overview__title {
+  font-weight: 400;
+  line-height: 200%;
+}
+
+.overview__items {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.overview__main-info {}
+
+.overview__item-icon {}
+
+.overview__item-value {}
+
+.overview__item-name {}
+
+.overview__info {}
+
+.overview__card-info {}
+
+.overview__small-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+}
+
+.overview__small-item {}
+
+.overview__small-item-icon {}
+
+.overview__small-item-name {}
+
+.overview__small-item-value {}
+
+.overview__forecast {}
+
+.overview__forecast-item {}
+
+.overview__forecast-item-data {}
+
+.overview__forecast-item-info {}
+
+.overview__forecast-item-temp {}
 
 /* Future section */
