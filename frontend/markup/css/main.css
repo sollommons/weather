@@ -553,7 +553,6 @@ body {
 
 .overview__card-info {
   font-weight: normal;
-
 }
 
 .overview__small-items {
@@ -612,7 +611,70 @@ body {
 .overview__forecast-item-time {}
 
 .overview__forecast-item-temp {
-  font-style: 10px;
+  font-style: 18px;
+  font-weight: normal;
+  margin: 30px 0;
 }
 
-/* Future section */
+/* Chart section */
+
+.chart {
+  margin: 30px;
+}
+
+.chart__content {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15px;
+}
+
+.chart__content-info {
+  display: flex;
+}
+
+.chart__content-info-period {
+  font-weight: normal;
+  margin: 0 20px;
+  padding: 0 0;
+  padding-top: 5px;
+}
+
+.mock {
+  width: 500px;
+}
+
+.custom-select {
+  position: relative;
+  margin-left: 20px;
+}
+
+.custom-select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 30px 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--light-grey);
+  font-size: 14px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #666;
+  pointer-events: none;
+}
+
+.custom-select select:hover {
+  outline: none;
+  box-shadow: 2px 2px 2px 2px var(--shadow);
+  transition: 0.3s;
+  ;
+}
