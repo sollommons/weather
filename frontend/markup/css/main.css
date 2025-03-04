@@ -568,30 +568,51 @@ body {
 .overview__small-item {
   background-color: var(--light-grey);
   border-radius: 10px;
-
+  padding: 30px 30px;
+  display: flex;
+  gap: 25px;
 }
 
 .overview__small-item-icon {
-  width: 15px;
+  width: 30px;
 
 }
 
-.overview__small-item-name {}
+.overview__small-item-name {
+  font-weight: normal;
+  opacity: 60%;
+  font-size: 18px;
+}
 
-.overview__small-item-value {}
+.overview__small-item-value {
+  font-weight: normal;
+
+}
 
 .overview__forecast {
   background-color: var(--light-grey);
   border-radius: 10px;
-
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.overview__forecast-item {}
+.overview__forecast-item {
+  display: flex;
+  justify-content: space-between;
+}
 
 .overview__forecast-item-data {}
 
-.overview__forecast-item-info {}
+.overview__forecast-item-day {
+  opacity: 60%;
+}
 
-.overview__forecast-item-temp {}
+.overview__forecast-item-time {}
+
+.overview__forecast-item-temp {
+  font-style: 10px;
+}
 
 /* Future section */
