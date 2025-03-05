@@ -1,23 +1,26 @@
-import { ForecastItem as ForecastItemComponent } from "../forecast-item/forecast-item";
-import { ForecastItem } from "../../types/state/state-types";
 import { Fragment } from "react/jsx-runtime";
 
+import { ForecastItem } from "../forecast-item/forecast-item";
+import { getForecast } from "../../store/main-process/selectors";
+import { useSelector } from "react-redux";
+
 export function Forecast(): JSX.Element {
-  const elem: ForecastItem = {
-    time: "Monday 12:00",
-    temperature: 12
-  };
-  const ForecastItems = [elem, elem, elem, elem, elem];
+  const ForecastItems = useSelector(getForecast);
+
   return (
     <div className="overview__forecast">
       {ForecastItems.map((item, id) => {
-        const keyValue = `${id}-${item.time}`;
+        const date = new Date(item.date);
+        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+        const hour = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+        const keyValue = `${id}-${item.date}`;
         return (
           <Fragment key={keyValue}>
-            <ForecastItemComponent
-              day="Monday"
-              time={item.time}
-              temp="12 °C"
+            <ForecastItem
+              day={dayOfWeek}
+              time={hour}
+              temp={item.temperature}
             />
           </Fragment>
         );

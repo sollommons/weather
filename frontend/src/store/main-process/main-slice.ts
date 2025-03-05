@@ -17,25 +17,31 @@ const initialState: AppState = {
   forecast: [],
   darkTheme: false,
   isLoading: true,
+  isError: false,
 };
 
 export const mainSlice = createSlice({
   name: 'Main',
   initialState,
   reducers: {
-    loadInfo: (state, action: PayloadAction<AppState>) => {
+    loadInfo: (state, action: PayloadAction<Omit<AppState, "isError" | "isLoading" | "darkTheme">>) => {
       state.activeCityName = action.payload.activeCityName;
       state.date = action.payload.date;
       state.temperature = action.payload.temperature;
       state.weatherInfo = action.payload.weatherInfo;
       state.forecast = action.payload.forecast;
-      state.isLoading = false;
+    },
+    setLoadingStatus: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
     },
     changeCity: (state, action: PayloadAction<string>) => {
       state.activeCityName = action.payload;
     },
     toggleTheme: (state) => {
       state.darkTheme = !state.darkTheme;
+    },
+    setError: (state) => {
+      state.isError = true;
     },
   },
 });
@@ -44,6 +50,8 @@ export const {
   loadInfo,
   changeCity,
   toggleTheme,
+  setLoadingStatus,
+  setError
 } = mainSlice.actions;
 
 export default mainSlice;

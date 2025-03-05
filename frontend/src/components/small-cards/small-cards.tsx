@@ -1,18 +1,16 @@
 import { Fragment } from "react/jsx-runtime";
 import { SmallCard } from "../small-card/small-card";
 
+import { useSelector } from "react-redux";
+
+import { getInfo } from "../../store/main-process/selectors";
+
 export function SmallCards(): JSX.Element {
-  const weatherInfo = {
-    "Wind speed": "28 km/h",
-    "Visibility": "10 km",
-    "Pressure": "1008 hPa",
-    "Humidity": "48%",
-    "Sunrise": "06:26",
-    "Sunset": "19:44",
-  };
+  const weatherInfo = useSelector(getInfo);
 
   const icons = ["./img/wind.svg", "./img/visibility.svg", "./img/pressure.svg",
     "./img/humidity.svg", "./img/sunrise.svg", "./img/sunset.svg"];
+  const desc = ["km/h", "km", "hPa", "%", "", ""];
 
   return (
     <div className="overview__small-items">
@@ -24,6 +22,7 @@ export function SmallCards(): JSX.Element {
               icon={icons[id]}
               name={key}
               value={val}
+              desc={desc[id]}
             />
           </Fragment>
         );

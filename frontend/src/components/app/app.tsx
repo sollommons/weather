@@ -7,13 +7,16 @@ import { MainCard } from '../main-card/main-card';
 import { SmallCards } from '../small-cards/small-cards';
 import { Forecast } from '../forecast/forecast';
 import { ChartBlock } from '../chart-block/chart-block';
+import { LoadingScreen } from '../../pages/loading-screen/loading-screen';
 import { getIsDarkTheme } from '../../store/main-process/selectors';
+import { getIsLoading } from '../../store/main-process/selectors';
 import { toggleTheme } from '../../store/main-process/main-slice';
 
-function App(): JSX.Element {
-  // const authorizationStatus = AuthorizationStatus.Unknown;
+import { fetchWeatherAction } from '../../store/api-actions';
 
-  // if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+function App(): JSX.Element {
+
+  // if (useSelector(getIsLoading)) {
   //   return (
   //     <LoadingScreen />
   //   );
@@ -35,6 +38,8 @@ function App(): JSX.Element {
       document.body.classList.remove('dark-theme');
     }
   }, [darkTheme]);
+
+  dispatch(fetchWeatherAction());
 
   return (
     <section className="content">

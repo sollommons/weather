@@ -1,7 +1,7 @@
 import { store } from '../../store';
 
 export type ForecastItem = {
-  time: string;
+  date: string;
   temperature: number;
 }
 
@@ -29,6 +29,7 @@ export type AppState = {
   forecast: ForecastItem[];
   darkTheme: boolean;
   isLoading: boolean;
+  isError: boolean;
 }
 
 export type State = ReturnType<typeof store.getState>;
