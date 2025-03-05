@@ -3,11 +3,11 @@ import { ForecastItem } from "../forecast-item/forecast-item";
 export function Forecast(): JSX.Element {
   return (
     <div className="overview__forecast">
-      <ForecastItem />
-      <ForecastItem />
-      <ForecastItem />
-      <ForecastItem />
-      <ForecastItem />
+      <ForecastItem
+        day="Monday"
+        time="12:00"
+        temp="12 °C"
+      />
     </div>
   );
 }

@@ -1,11 +1,17 @@
-export function ForecastItem(): JSX.Element {
+type ForecastItemProps = {
+  day: string;
+  time: string;
+  temp: string;
+}
+
+export function ForecastItem({ day, time, temp }: ForecastItemProps): JSX.Element {
   return (
     <div className="overview__forecast-item">
       <div className="overview__forecast-item-data">
-        <p className="overview__forecast-item-day">Monday</p>
-        <p className="overview__forecast-item-time">12:00</p>
+        <p className="overview__forecast-item-day">{day}</p>
+        <p className="overview__forecast-item-time">{time}</p>
       </div>
-      <h3 className="overview__forecast-item-temp">12,2°C</h3>
+      <h3 className="overview__forecast-item-temp">{temp}</h3>
     </div>
   );
 }
