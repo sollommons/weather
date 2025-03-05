@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 
-const App = () => <div>Weather</div>;
+import App from './components/app/app';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
