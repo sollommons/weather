@@ -22,10 +22,16 @@ export function Header(): JSX.Element {
         >
           <img src="./img/full-moon.svg" alt="to dark mode" className="header__btn-img" />
         </button>
-        <button className="header__support-btn">
-          <img src="./img/github.svg" alt="github" className="header__github" />
-          <p className="header__support-desc">Support Project</p>
-        </button>
+        <a
+          href="https://github.com/Churina-Margaery/weather"
+          target="_blank"
+          className="header__support-link"
+        >
+          <button className="header__support-btn">
+            <img src="./img/github.svg" alt="github" className="header__github" />
+            <p className="header__support-desc">Support Project</p>
+          </button>
+        </a>
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { Header } from '../header/header';
 import { MainCard } from '../main-card/main-card';
@@ -7,6 +8,7 @@ import { SmallCards } from '../small-cards/small-cards';
 import { Forecast } from '../forecast/forecast';
 import { ChartBlock } from '../chart-block/chart-block';
 import { getIsDarkTheme } from '../../store/main-process/selectors';
+import { toggleTheme } from '../../store/main-process/main-slice';
 
 function App(): JSX.Element {
   // const authorizationStatus = AuthorizationStatus.Unknown;
@@ -16,6 +18,12 @@ function App(): JSX.Element {
   //     <LoadingScreen />
   //   );
   // }
+  const dispatch = useDispatch();
+  const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (systemDarkMode) {
+    dispatch(toggleTheme());
+  }
 
   const darkTheme = useSelector(getIsDarkTheme);
 
@@ -25,9 +33,6 @@ function App(): JSX.Element {
     } else {
       document.body.classList.remove('dark-theme');
     }
-
-    // Опционально: сохраняем тему в localStorage
-    localStorage.setItem('theme', darkTheme ? 'dark' : 'light');
   }, [darkTheme]);
 
   return (

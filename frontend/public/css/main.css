@@ -398,6 +398,18 @@ template {
   --shadow: rgb(219, 219, 255);
 }
 
+/* Темная тема для систем с prefers-color-scheme: dark */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --dark-grey: #565656;
+    --light-grey: #d1cfcf;
+    --black: #FFF;
+    --white: #242424;
+    --shadow: rgb(219, 219, 255);
+  }
+} */
+
+
 :active,
 :hover,
 :focus {
@@ -481,6 +493,10 @@ body {
 
 .header__btn-img {
   width: 15px;
+}
+
+.header__support-link {
+  text-decoration: none;
 }
 
 .header__support-btn {
