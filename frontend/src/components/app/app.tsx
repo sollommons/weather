@@ -1,11 +1,12 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { Fragment } from 'react/jsx-runtime';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Header } from '../header/header';
 import { MainCard } from '../main-card/main-card';
 import { SmallCards } from '../small-cards/small-cards';
 import { Forecast } from '../forecast/forecast';
 import { ChartBlock } from '../chart-block/chart-block';
+import { getIsDarkTheme } from '../../store/main-process/selectors';
 
 function App(): JSX.Element {
   // const authorizationStatus = AuthorizationStatus.Unknown;
@@ -16,10 +17,22 @@ function App(): JSX.Element {
   //   );
   // }
 
+  const darkTheme = useSelector(getIsDarkTheme);
+
+  useEffect(() => {
+    if (darkTheme) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+
+    // Опционально: сохраняем тему в localStorage
+    localStorage.setItem('theme', darkTheme ? 'dark' : 'light');
+  }, [darkTheme]);
+
   return (
     <section className="content">
       <Header />
-
       <main className="main">
         <div className="container">
           <section className="overview">
