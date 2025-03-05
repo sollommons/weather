@@ -1,3 +1,4 @@
+import { Fragment } from "react/jsx-runtime";
 import { SmallCard } from "../small-card/small-card";
 
 export function SmallCards(): JSX.Element {
@@ -10,14 +11,21 @@ export function SmallCards(): JSX.Element {
     "Sunset": "19:44",
   };
 
+  const icons = ["./img/wind.svg", "./img/visibility.svg", "./img/pressure.svg",
+    "./img/humidity.svg", "./img/sunrise.svg", "./img/sunset.svg"];
+
   return (
     <div className="overview__small-items">
-      {Object.entries(weatherInfo).map(([key, val]) => {
+      {Object.entries(weatherInfo).map(([key, val], id) => {
+        const keyValue = `${id}-${key}`;
         return (
-          <SmallCard
-            name={key}
-            value={val}
-          />
+          <Fragment key={keyValue}>
+            <SmallCard
+              icon={icons[id]}
+              name={key}
+              value={val}
+            />
+          </Fragment>
         );
       })}
     </div>
