@@ -1,8 +1,11 @@
-export function ChartBlock(): JSX.Element {
+type ChartBlockProps = {
+  period: 3 | 10;
+}
+export function ChartBlock({ period = 3 }: ChartBlockProps): JSX.Element {
   return (
     <div className="chart__content-part">
       <div className="chart__content-info">
-        <h3 className="chart__content-info-period">3 Days</h3>
+        <h3 className="chart__content-info-period">Last {period} Days</h3>
         <div className="custom-select">
           <select name="period1" required>
             <option value="" disabled selected>Select</option>

@@ -32,8 +32,12 @@ function App(): JSX.Element {
           </section>
           <section className="chart">
             <div className="chart__content">
-              <ChartBlock />
-              <ChartBlock />
+              <ChartBlock
+                period={3}
+              />
+              <ChartBlock
+                period={10}
+              />
             </div>
           </section>
         </div>

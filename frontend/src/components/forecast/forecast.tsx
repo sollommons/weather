@@ -1,41 +1,13 @@
+import { ForecastItem } from "../forecast-item/forecast-item";
+
 export function Forecast(): JSX.Element {
   return (
     <div className="overview__forecast">
-      <div className="overview__forecast-item">
-        <div className="overview__forecast-item-data">
-          <p className="overview__forecast-item-day">Monday</p>
-          <p className="overview__forecast-item-time">12:00</p>
-        </div>
-        <h3 className="overview__forecast-item-temp">12,2°C</h3>
-      </div>
-      <div className="overview__forecast-item">
-        <div className="overview__forecast-item-data">
-          <p className="overview__forecast-item-day">Monday</p>
-          <p className="overview__forecast-item-time">12:00</p>
-        </div>
-        <h3 className="overview__forecast-item-temp">12,2°C</h3>
-      </div>
-      <div className="overview__forecast-item">
-        <div className="overview__forecast-item-data">
-          <p className="overview__forecast-item-day">Monday</p>
-          <p className="overview__forecast-item-time">12:00</p>
-        </div>
-        <h3 className="overview__forecast-item-temp">12,2°C</h3>
-      </div>
-      <div className="overview__forecast-item">
-        <div className="overview__forecast-item-data">
-          <p className="overview__forecast-item-day">Monday</p>
-          <p className="overview__forecast-item-time">12:00</p>
-        </div>
-        <h3 className="overview__forecast-item-temp">12,2°C</h3>
-      </div>
-      <div className="overview__forecast-item">
-        <div className="overview__forecast-item-data">
-          <p className="overview__forecast-item-day">Monday</p>
-          <p className="overview__forecast-item-time">12:00</p>
-        </div>
-        <h3 className="overview__forecast-item-temp">12,2°C</h3>
-      </div>
+      <ForecastItem />
+      <ForecastItem />
+      <ForecastItem />
+      <ForecastItem />
+      <ForecastItem />
     </div>
   );
 }
