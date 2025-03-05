@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+  <section class="content">
+    <header class="header">
+      <div class="container">
+        <div class="header__weather-label">
+          <img src="./img/cloud.svg" alt="cloud" class="header__cloud">
+          <p class="header__label-desc">weather</p>
+        </div>
+        <img src="./img/loupe.svg" alt="loupe" class="header__loupe">
+        <input type="search" name="search-city" placeholder="Enter city name" id="1" class="header__city-search">
+        <button class="header__btn">
+          <img src="./img/full-moon.svg" alt="to dark mode" class="header__btn-img">
+        </button>
+        <button class="header__support-btn">
+          <img src="./img/github.svg" alt="github" class="header__github">
+          <p class="header__support-desc">Support Project</p>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="overview">
+          <h1 class="overview__title">Today Overview</h1>
+          <div class="overview__items">
+            <div class="overview__main-info">
+              <img src="./img/sun.svg" alt="icon" class="overview__item-icon">
+              <h2 class="overview__item-value">12,2°C</h2>
+              <h3 class="overview__item-name">Clear sky</h3>
+              <div class="overview__info">
+                <div class="overview__info-item">
+                  <img src="./img/location.svg" alt="icon" class="overview__item-icon-small">
+                  <h3 class="overview__card-info">Spb</h3>
+                </div>
+                <div class="overview__info-item">
+                  <img src="./img/calendar.svg" alt="icon" class="overview__item-icon-small">
+                  <h3 class="overview__card-info">28 August Monday</h3>
+                </div>
+              </div>
+            </div>
+            <div class="overview__small-items">
+              <div class="overview__small-item">
+                <img src="./img/wind.svg" alt="icon" class="overview__small-item-icon">
+                <div class="overview__small-item-data">
+                  <h3 class="overview__small-item-name">Wind speed</h3>
+                  <h2 class="overview__small-item-value">28 km/h</h2>
+                </div>
+              </div>
+              <div class="overview__small-item">
+                <img src="./img/pressure.svg" alt="icon" class="overview__small-item-icon">
+                <div class="overview__small-item-data">
+                  <h3 class="overview__small-item-name">Pressure</h3>
+                  <h2 class="overview__small-item-value">1008 hPa</h2>
+                </div>
+              </div>
+              <div class="overview__small-item">
+                <img src="./img/sunrise.svg" alt="icon" class="overview__small-item-icon">
+                <div class="overview__small-item-data">
+                  <h3 class="overview__small-item-name">Sunrise</h3>
+                  <h2 class="overview__small-item-value">06:26</h2>
+                </div>
+              </div>
+              <div class="overview__small-item">
+                <img src="./img/visibility.svg" alt="icon" class="overview__small-item-icon">
+                <div class="overview__small-item-data">
+                  <h3 class="overview__small-item-name">Humidity</h3>
+                  <h2 class="overview__small-item-value">48%</h2>
+                </div>
+              </div>
+              <div class="overview__small-item">
+                <img src="./img/visibility.svg" alt="icon" class="overview__small-item-icon">
+                <div class="overview__small-item-data">
+                  <h3 class="overview__small-item-name">Visibility</h3>
+                  <h2 class="overview__small-item-value">10 km</h2>
+                </div>
+              </div>
+              <div class="overview__small-item">
+                <img src="./img/sunset.svg" alt="icon" class="overview__small-item-icon">
+                <div class="overview__small-item-data">
+                  <h3 class="overview__small-item-name">Sunset</h3>
+                  <h2 class="overview__small-item-value">19:44</h2>
+                </div>
+              </div>
+            </div>
+            <div class="overview__forecast">
+              <div class="overview__forecast-item">
+                <div class="overview__forecast-item-data">
+                  <p class="overview__forecast-item-day">Monday</p>
+                  <p class="overview__forecast-item-time">12:00</p>
+                </div>
+                <h3 class="overview__forecast-item-temp">12,2°C</h3>
+              </div>
+              <div class="overview__forecast-item">
+                <div class="overview__forecast-item-data">
+                  <p class="overview__forecast-item-day">Monday</p>
+                  <p class="overview__forecast-item-time">12:00</p>
+                </div>
+                <h3 class="overview__forecast-item-temp">12,2°C</h3>
+              </div>
+              <div class="overview__forecast-item">
+                <div class="overview__forecast-item-data">
+                  <p class="overview__forecast-item-day">Monday</p>
+                  <p class="overview__forecast-item-time">12:00</p>
+                </div>
+                <h3 class="overview__forecast-item-temp">12,2°C</h3>
+              </div>
+              <div class="overview__forecast-item">
+                <div class="overview__forecast-item-data">
+                  <p class="overview__forecast-item-day">Monday</p>
+                  <p class="overview__forecast-item-time">12:00</p>
+                </div>
+                <h3 class="overview__forecast-item-temp">12,2°C</h3>
+              </div>
+              <div class="overview__forecast-item">
+                <div class="overview__forecast-item-data">
+                  <p class="overview__forecast-item-day">Monday</p>
+                  <p class="overview__forecast-item-time">12:00</p>
+                </div>
+                <h3 class="overview__forecast-item-temp">12,2°C</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="chart">
+          <div class="chart__content">
+            <div class="chart__content-part">
+              <div class="chart__content-info">
+                <h3 class="chart__content-info-period">3 Days</h3>
+                <div class="custom-select">
+                  <select name="period1" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="wind">Wind speed</option>
+                    <option value="pressure">Pressure</option>
+                    <option value="humidity">Humidity</option>
+                    <option value="visibility">Visibility</option>
+                  </select>
+                </div>
+              </div>
+              <img src="./img/mock-diagram.png" alt="mock" class="mock">
+            </div>
+            <div class="chart__content-part">
+              <div class="chart__content-info">
+                <h3 class="chart__content-info-period">10 Days</h3>
+                <div class="custom-select">
+                  <select name="period2" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="wind">Wind speed</option>
+                    <option value="pressure">Pressure</option>
+                    <option value="humidity">Humidity</option>
+                    <option value="visibility">Visibility</option>
+                  </select>
+                </div>
+              </div>
+              <img src="./img/mock-diagram.png" alt="mock" class="mock">
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </section>
+</body>
+
+</html>
