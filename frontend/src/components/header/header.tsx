@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { getIsDarkTheme } from '../../store/main-process/selectors';
 
 import { toggleTheme } from '../../store/main-process/main-slice';
-
 
 export function Header(): JSX.Element {
 
@@ -20,7 +22,11 @@ export function Header(): JSX.Element {
           className="header__btn"
           onClick={() => dispatch(toggleTheme())}
         >
-          <img src="./img/full-moon.svg" alt="to dark mode" className="header__btn-img" />
+          <img
+            src={useSelector(getIsDarkTheme) ? "./img/light-moon.svg" : "./img/full-moon.svg"}
+            alt="switch mode"
+            className="header__btn-img"
+          />
         </button>
         <a
           href="https://github.com/Churina-Margaery/weather"

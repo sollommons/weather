@@ -18,6 +18,7 @@ function App(): JSX.Element {
   //     <LoadingScreen />
   //   );
   // }
+
   const dispatch = useDispatch();
   const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
