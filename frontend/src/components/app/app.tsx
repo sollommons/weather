@@ -16,12 +16,6 @@ import { fetchWeatherAction } from '../../store/api-actions';
 
 function App(): JSX.Element {
 
-  // if (useSelector(getIsLoading)) {
-  //   return (
-  //     <LoadingScreen />
-  //   );
-  // }
-
   const dispatch = useDispatch();
   const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -40,6 +34,12 @@ function App(): JSX.Element {
   }, [darkTheme]);
 
   dispatch(fetchWeatherAction());
+
+  // if (useSelector(getIsLoading)) {
+  //   return (
+  //     <LoadingScreen />
+  //   );
+  // }
 
   return (
     <section className="content">
