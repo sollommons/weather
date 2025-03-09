@@ -10,7 +10,7 @@ export function SmallCard({ icon, name, value, desc }: SmallCardProps): JSX.Elem
     const time = new Date(value).toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
-      hour12: false // 24-часовой формат
+      hour12: false
     });
 
     return (

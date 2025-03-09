@@ -1,12 +1,12 @@
 import { Fragment } from "react/jsx-runtime";
 import { SmallCard } from "../small-card/small-card";
 
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store";
 
 import { getInfo } from "../../store/main-process/selectors";
 
 export function SmallCards(): JSX.Element {
-  const weatherInfo = useSelector(getInfo);
+  const weatherInfo = useAppSelector(getInfo);
 
   const icons = ["./img/wind.svg", "./img/visibility.svg", "./img/pressure.svg",
     "./img/humidity.svg", "./img/sunrise.svg", "./img/sunset.svg"];

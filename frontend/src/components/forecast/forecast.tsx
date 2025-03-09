@@ -2,10 +2,10 @@ import { Fragment } from "react/jsx-runtime";
 
 import { ForecastItem } from "../forecast-item/forecast-item";
 import { getForecast } from "../../store/main-process/selectors";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store";
 
 export function Forecast(): JSX.Element {
-  const ForecastItems = useSelector(getForecast);
+  const ForecastItems = useAppSelector(getForecast);
 
   return (
     <div className="overview__forecast">

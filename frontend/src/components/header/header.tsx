@@ -1,13 +1,10 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-
+import { useAppSelector, useAppDispatch } from "../../store";
 import { getIsDarkTheme } from '../../store/main-process/selectors';
-
 import { toggleTheme } from '../../store/main-process/main-slice';
 
 export function Header(): JSX.Element {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <header className="header">
@@ -23,7 +20,7 @@ export function Header(): JSX.Element {
           onClick={() => dispatch(toggleTheme())}
         >
           <img
-            src={useSelector(getIsDarkTheme) ? "./img/light-moon.svg" : "./img/full-moon.svg"}
+            src={useAppSelector(getIsDarkTheme) ? "./img/light-moon.svg" : "./img/full-moon.svg"}
             alt="switch mode"
             className="header__btn-img"
           />
