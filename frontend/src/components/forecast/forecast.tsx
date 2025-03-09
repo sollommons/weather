@@ -25,7 +25,6 @@ export function Forecast(): JSX.Element {
           </Fragment>
         );
       })}
-
     </div>
   );
 }

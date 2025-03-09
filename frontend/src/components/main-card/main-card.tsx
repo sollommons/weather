@@ -5,13 +5,11 @@ import { getDate } from "../../store/main-process/selectors";
 
 export function MainCard(): JSX.Element {
   const date = new Date(useAppSelector(getDate));
-  console.log(date);
-
-
   const formattedDate = date.toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'long'
   });
+
   return (
     <div className="overview__main-info">
       <img src="./img/sun.svg" alt="icon" className="overview__item-icon" />

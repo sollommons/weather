@@ -7,8 +7,7 @@ import { Forecast } from '../forecast/forecast';
 import { ChartBlock } from '../chart-block/chart-block';
 import { getIsDarkTheme } from '../../store/main-process/selectors';
 import { toggleTheme } from '../../store/main-process/main-slice';
-import { useAppDispatch } from '../../store';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchWeatherAction } from '../../store/api-actions';
 
 function App(): JSX.Element {
