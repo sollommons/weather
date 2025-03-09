@@ -1,39 +1,30 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
 import { Header } from '../header/header';
 import { MainCard } from '../main-card/main-card';
 import { SmallCards } from '../small-cards/small-cards';
 import { Forecast } from '../forecast/forecast';
 import { ChartBlock } from '../chart-block/chart-block';
-import { LoadingScreen } from '../../pages/loading-screen/loading-screen';
 import { getIsDarkTheme } from '../../store/main-process/selectors';
-import { getIsLoading } from '../../store/main-process/selectors';
 import { toggleTheme } from '../../store/main-process/main-slice';
-
+import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchWeatherAction } from '../../store/api-actions';
 
 function App(): JSX.Element {
-
-  const dispatch = useDispatch();
-  const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (systemDarkMode) {
-    dispatch(toggleTheme());
-  }
-
-  const darkTheme = useSelector(getIsDarkTheme);
+  const dispatch = useAppDispatch();
+  const darkTheme = useAppSelector(getIsDarkTheme);
 
   useEffect(() => {
-    if (darkTheme) {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
+    dispatch(fetchWeatherAction());
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (systemDarkMode) {
+      dispatch(toggleTheme());
     }
-  }, [darkTheme]);
+  }, [dispatch]);
 
-  dispatch(fetchWeatherAction());
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', darkTheme);
+  }, [darkTheme]);
 
   // if (useSelector(getIsLoading)) {
   //   return (

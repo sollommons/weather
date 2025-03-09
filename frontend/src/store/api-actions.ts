@@ -3,14 +3,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { loadInfo, setLoadingStatus, setError } from './main-process/main-slice.js';
 import { ForecastItem } from '../types/state/state-types.js';
-import { State } from '../types/state/state-types.js';
-import { store } from './index.js';
+import { AppDispatch, RootState } from '../store';
 
-export const fetchWeatherAction = createAsyncThunk<void, undefined, {
-  dispatch: typeof store.dispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const fetchWeatherAction = createAsyncThunk<
+  void,
+  undefined,
+  {
+    dispatch: AppDispatch;
+    state: RootState;
+    extra: AxiosInstance;
+  }
+>(
   'data/fetchWeather',
   async (_arg, { dispatch, extra: api }) => {
     try {
