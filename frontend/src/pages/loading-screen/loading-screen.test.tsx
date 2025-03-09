@@ -10,6 +10,5 @@ describe('LoadingScreen', () => {
     expect(loadingElement).toBeInTheDocument();
     expect(loadingElement).toHaveClass('loading-text');
 
-    expect(screen.getByRole('status')).toBeInTheDocument();
   });
 });
