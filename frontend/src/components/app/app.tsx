@@ -17,11 +17,14 @@ import { fetchWeatherAction } from '../../store/api-actions';
 function App(): JSX.Element {
 
   const dispatch = useDispatch();
-  const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  dispatch(fetchWeatherAction());
 
-  if (systemDarkMode) {
-    dispatch(toggleTheme());
-  }
+  useEffect(() => {
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (systemDarkMode) {
+      dispatch(toggleTheme());
+    }
+  }, []);
 
   const darkTheme = useSelector(getIsDarkTheme);
 
@@ -32,8 +35,6 @@ function App(): JSX.Element {
       document.body.classList.remove('dark-theme');
     }
   }, [darkTheme]);
-
-  dispatch(fetchWeatherAction());
 
   // if (useSelector(getIsLoading)) {
   //   return (
