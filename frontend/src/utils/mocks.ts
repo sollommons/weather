@@ -8,4 +8,6 @@ export const mockForecast = [
   { date: '2025-03-10T15:00:00', temperature: 22 },
 ];
 
+export const mockForecastItem = { day: 'Sunday', time: '12:00', temperature: 20 };
+
 export type AppThunkDispatch = ThunkDispatch<State, ReturnType<typeof createAPI>, Action>;

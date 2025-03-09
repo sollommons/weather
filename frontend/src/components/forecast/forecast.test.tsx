@@ -35,7 +35,7 @@ describe('Forecast component', () => {
       </Provider>
     );
 
-    expect(screen.getAllByTestId('forecast-item')).toHaveLength(2);
+    expect(screen.getAllByTestId('forecast-item-container')).toHaveLength(2);
   });
 
   it('should format date and temperature correctly', () => {
@@ -58,7 +58,7 @@ describe('Forecast component', () => {
       </Provider>
     );
 
-    expect(screen.queryByRole('forecast-item')).toBeNull();
+    expect(screen.queryByRole('forecast-item-container')).toBeNull();
   });
 
   // it('should generate unique keys', () => {  // TODO надо ли этот тест?
