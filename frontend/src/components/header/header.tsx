@@ -7,7 +7,7 @@ export function Header(): JSX.Element {
   const dispatch = useAppDispatch();
 
   return (
-    <header className="header">
+    <header className="header" data-testid="header-container">
       <div className="container">
         <div className="header__weather-label">
           <img src="./img/cloud.svg" alt="cloud" className="header__cloud" />
