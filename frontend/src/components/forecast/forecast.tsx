@@ -8,7 +8,7 @@ export function Forecast(): JSX.Element {
   const ForecastItems = useAppSelector(getForecast);
 
   return (
-    <div className="overview__forecast">
+    <div className="overview__forecast" data-testid="forecast-container">
       {ForecastItems.map((item, id) => {
         const date = new Date(item.date);
         const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });

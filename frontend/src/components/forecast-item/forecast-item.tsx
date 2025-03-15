@@ -6,7 +6,7 @@ type ForecastItemProps = {
 
 export function ForecastItem({ day, time, temp }: ForecastItemProps): JSX.Element {
   return (
-    <div className="overview__forecast-item">
+    <div className="overview__forecast-item" data-testid="forecast-item-container">
       <div className="overview__forecast-item-data">
         <p className="overview__forecast-item-day">{day}</p>
         <p className="overview__forecast-item-time">{time}</p>

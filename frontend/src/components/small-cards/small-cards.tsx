@@ -13,7 +13,7 @@ export function SmallCards(): JSX.Element {
   const desc = ["km/h", "km", "hPa", "%", "", ""];
 
   return (
-    <div className="overview__small-items">
+    <div className="overview__small-items" data-testid="small-cards-container">
       {Object.entries(weatherInfo).map(([key, val], id) => {
         const keyValue = `${id}-${key}`;
         return (
