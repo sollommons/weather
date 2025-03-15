@@ -8,6 +8,15 @@ export const mockForecast = [
   { date: '2025-03-10T15:00:00', temperature: 22 },
 ];
 
+export const mockData = {
+  "Wind speed": 0,
+  "Visibility": 0,
+  "Pressure": 0,
+  "Humidity": 0,
+  "Sunrise": Date(),
+  "Sunset": Date(),
+};
+
 export const mockSmallCardItem = {
   icon: "./img/wind.svg",
   name: "Wind speed",
