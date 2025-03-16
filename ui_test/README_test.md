@@ -1,6 +1,8 @@
 1. Установить Maven отсюда https://maven.apache.org/download.cgi
+
 ![alt text](sources/file_maven.png)
 2. Добавить папку bin в path в системных переменных
+
 ![alt text](sources/path_maven.png)
 3. Установить JDK отсюда https://www.oracle.com/java/technologies/downloads/#jdk23-windows
 ![alt text](sources/file_java.png)
@@ -21,7 +23,7 @@ java --version
 ![alt text](sources/configure.png)
 Проверяем, что там JavaSE
 ![alt text](sources/check_configure.png)
-9. Ждем, пока прогрузятся все зависимости (около минутки)
-10. Запускаем сайт по основной README
-11. Заходим в файл AppTest.java и запускаем тест по кнопочке напротив теста
+11. Ждем, пока прогрузятся все зависимости (около минутки)
+12. Запускаем сайт по основной README
+13. Заходим в файл AppTest.java и запускаем тест по кнопочке напротив теста
 ![alt text](sources/start_test.png)
