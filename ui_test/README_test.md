@@ -26,7 +26,9 @@
 8. Проваливаемся в папку D:\Code\Konstr\weather\ui_test
 
 9. Проверяем, что нет ошибок на запросы
+
 mvn --version
+
 java --version
 
 ![alt text](sources/check_versions.png)
