@@ -16,6 +16,12 @@
             <input type="text" id="countryName" name="countryName">
             <button>Find</button>
         </form>
+	{% if error %}
+	
+	{{ error }}
+
+	{% endif %}
+
         {% if data %}
         
         {{ data }}
