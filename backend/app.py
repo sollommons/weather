@@ -15,9 +15,8 @@ def index():
         if status == 200:
             data = result
         else:
-	    error = result['error']
+            error = result['error']
 	#print(get_weather(city, state, country))
-
     return render_template('index.html', data=data, error=error)
 
 if __name__ == '__main__':

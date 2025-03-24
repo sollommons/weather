@@ -73,12 +73,12 @@ def get_weather_forecast(lat, lon, API_key):
 
 def main(city_name, state_name, country_name):
     try:
-	lat, lon = get_lan_lon(city_name, state_name, country_name, api_key)
-    	weather_data = get_current_weather(lat, lon, api_key)
-    	forecast_data = get_weather_forecast(lat, lon, api_key)
-	return {"weather": weather_data, "forecast": forecast_data}, 200
+        lat, lon = get_lan_lon(city_name, state_name, country_name, api_key)
+        weather_data = get_current_weather(lat, lon, api_key)
+        forecast_data = get_weather_forecast(lat, lon, api_key)
+        return {"weather": weather_data, "forecast": forecast_data}, 200
     except Exception as e:
-	return {"error": str(e)}, 404
+        return {"error": str(e)}, 404
 
 
 #print(main('Санкт-Петербург', 'Санкт-Петербург', 'Россия'))
