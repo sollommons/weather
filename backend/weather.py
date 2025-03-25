@@ -21,14 +21,24 @@ class WeatherData:
     humidity: int
     pressure: int
 
-def get_lan_lon(city_name, state_code, country_code, API_key ):
-    resp = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}').json()
-    data = resp[0]
-    lat, lon = data.get('lat'), data.get('lon')
-    return lat, lon
+def get_lan_lon(API_key, city_name, region):
+    if region:
+        location = f"{city_name},{region}"
+    else:
+        location = city_name
+    country_name = "RU"
+    resp = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={location},{country_name}&appid={API_key}')
+    print(resp.status_code)
+    if resp.status_code == 200:
+        data = resp.json()
+        print(data)
+        return (data[0].get('lat'), data[0].get('lon'), 200) if data else (None, None, 201) 
+    else:
+        return None, None, resp.status_code  
 
 def get_current_weather(lat, lon, API_key):
     resp = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}&units=metric').json()
+    
     visibility_km = resp.get('visibility') / 1000 
  
     tf = TimezoneFinder()
@@ -71,17 +81,15 @@ def get_weather_forecast(lat, lon, API_key):
     
     return forecasts
 
-def main(city_name, state_name, country_name):
-    try:
-        lat, lon = get_lan_lon(city_name, state_name, country_name, api_key)
+def main(city_name, region):
+    lat, lon, status_code = get_lan_lon(api_key, city_name, region)
+    print(status_code)
+    if status_code == 200:
         weather_data = get_current_weather(lat, lon, api_key)
         forecast_data = get_weather_forecast(lat, lon, api_key)
-        return {"weather": weather_data, "forecast": forecast_data}, 200
-    except Exception as e:
-        return {"error": str(e)}, 404
+        return {"weather": weather_data, "forecast": forecast_data}, status_code
+    elif status_code == 201:
+         return {"error": f"Error location "}, status_code
+    else:
+        return {"error": f"Error response "}, status_code
 
-
-#print(main('Санкт-Петербург', 'Санкт-Петербург', 'Россия'))
-# if __name__ == "__main__":
-#     lat, lon = get_lan_lon('Санкт-Петербург', 'Санкт-Петербург', 'Россия', api_key)
-#     get_current_weather(lat, lon, api_key)
