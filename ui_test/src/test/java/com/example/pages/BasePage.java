@@ -2,10 +2,6 @@ package com.example.pages;
 
 import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
 import com.example.elements.InfoBlock;
 import com.example.elements.SearchString;
 import com.example.elements.StatisticBlock;
