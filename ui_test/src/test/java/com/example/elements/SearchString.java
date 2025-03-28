@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import com.example.pages.GitHubPage;
 import com.example.pages.LoadablePage;
 
 public class SearchString implements LoadablePage {
@@ -28,8 +29,9 @@ public class SearchString implements LoadablePage {
         return true;
     }
 
-    public void openSupport() {
+    public GitHubPage openSupport() {
         $(supportProjectButton).click();
+        return new GitHubPage();
     }
 
     public void setText(String value) {
@@ -39,5 +41,9 @@ public class SearchString implements LoadablePage {
 
     public String getText() {
         return $(searchString).getValue();
+    }
+
+    public void changeTheme() {
+        $(themeButton).shouldBe(enabled).click();
     }
 }
