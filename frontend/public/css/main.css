@@ -441,6 +441,9 @@ body {
   display: flex;
   border-radius: 10px;
   background-color: var(--light-grey);
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .header__cloud {
@@ -505,6 +508,9 @@ body {
   background-color: var(--light-grey);
   border-radius: 10px;
   border: none;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .header__support-btn:hover {
