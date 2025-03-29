@@ -17,15 +17,19 @@
 
 ![alt text](sources/path_java.png)
 
-6. Открываем VSCode
+6. Установить allure отсюда https://github.com/allure-framework/allure2/releases/tag/2.33.0 - внизу есть zip файл
 
-7. В Extensions устанавливаем Extension Pack for Java
+7. Добавить папук bin в системную переменную Path
+
+8. Открываем VSCode
+
+9. В Extensions устанавливаем Extension Pack for Java
 
 ![alt text](sources/extesion_pack.png)
 
-8. Проваливаемся в папку D:\Code\Konstr\weather\ui_test
+10. Проваливаемся в папку D:\Code\Konstr\weather\ui_test
 
-9. Проверяем, что нет ошибок на запросы
+11. Проверяем, что нет ошибок на запросы
 
 mvn --version
 
@@ -33,7 +37,7 @@ java --version
 
 ![alt text](sources/check_versions.png)
 
-10. Нажимаем Ctrl + shift + P
+12. Нажимаем Ctrl + shift + P
 Вбиваем Java: Configure Java Runtime
 
 ![alt text](sources/configure.png)
@@ -42,10 +46,12 @@ java --version
 
 ![alt text](sources/check_configure.png)
 
-11. Ждем, пока прогрузятся все зависимости (около минутки)
+12. Ждем, пока прогрузятся все зависимости (около минутки)
 
-12. Запускаем сайт по основной README
+13. Запускаем сайт по основной README
 
-13. Заходим в файл AppTest.java и запускаем тест по кнопочке напротив теста
+14. Переходим в директорию ui_test: cd ui_test
 
-![alt text](sources/start_test.png)
+15. Запускает тесты: mvn clean test
+
+16. Запускаем создание отчета Allure: mvn allure:serve
