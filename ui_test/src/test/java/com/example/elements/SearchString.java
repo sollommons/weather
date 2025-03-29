@@ -3,7 +3,6 @@ package com.example.elements;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import com.example.pages.GitHubPage;
@@ -19,11 +18,11 @@ public class SearchString implements LoadablePage {
 
     @Override
     public boolean checkUI() {
-        $(nameString).shouldBe(visible);
-        $(searchImage).shouldBe(visible);
-        $(searchString).shouldBe(visible);
-        $(themeButton).shouldBe(visible);
-        $(supportProjectButton).shouldBe(visible);
+        $(nameString).isDisplayed();
+        $(searchImage).isDisplayed();
+        $(searchString).isDisplayed();
+        $(themeButton).isDisplayed();
+        $(supportProjectButton).isDisplayed();
         $(supportProjectButton).shouldHave(exactText("Support Project"));
         return true;
     }
