@@ -1,7 +1,6 @@
 package com.example.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.example.elements.SearchString;
@@ -23,7 +22,7 @@ public class WeatherPageTest extends BaseTest {
             searchString.checkUI();
         });
 
-        Allure.step("Переход на Гитхаб и проверка отображения", () -> {
+        Allure.step("Переход на Гитхаб и проверка отображения и URL", () -> {
             GitHubPage gitHubPage = searchString.openSupport();
             switchTo().window(1);
             gitHubPage.checkUI();
@@ -44,7 +43,6 @@ public class WeatherPageTest extends BaseTest {
             SearchString searchString = new SearchString();
             searchString.changeTheme();
         });
-
 
         Allure.step("Проверка, что текущая тема - светлая", () -> {
             basePage.isLightTheme();

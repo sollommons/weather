@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.example.elements.SearchString;
-
 import io.qameta.allure.Allure;
 
 @DisplayName("Строка поиска")
@@ -17,7 +16,8 @@ public class SearchingStringTest extends BaseTest {
 
         Allure.step("Отображение элементов строки поиска", () -> {
             searchString.checkUI();
-        });    }
+        });    
+    }
 
     @Test
     @DisplayName("Ввод текста в строку поиска")
