@@ -1,0 +1,129 @@
+/* Добавим медиа-запросы для разных разрешений */
+
+@media (max-width: 1200px) {
+  .content {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+
+  /* Шапка */
+  .header .container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .header__city-search {
+    width: 100%;
+    order: 1;
+  }
+
+  /* Основной контент */
+  .overview__items {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .overview__small-items {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chart__content {
+    flex-direction: column;
+  }
+
+  .mock {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Шапка */
+  .header__weather-label {
+    flex-grow: 1;
+  }
+
+  .header__btn,
+  .header__support-btn {
+    width: auto;
+    padding: 10px;
+  }
+
+  /* Основной контент */
+  .overview__small-items {
+    grid-template-columns: 1fr;
+  }
+
+  .overview__forecast-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .overview__forecast-item-temp {
+    margin: 10px 0;
+  }
+
+  .chart__content-part {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .content {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .header .container {
+    gap: 8px;
+  }
+
+  .header__support-desc {
+    display: none;
+  }
+
+  .overview__main-info {
+    padding: 20px;
+  }
+
+  .overview__item-icon {
+    width: 35px;
+    padding-bottom: 20px;
+  }
+
+  .overview__item-value {
+    font-size: 24px;
+  }
+
+  .overview__info {
+    margin-top: 20px;
+    padding-top: 10px;
+  }
+}
+
+/* Общие адаптивные правки */
+.overview__items {
+  transition: all 0.3s ease;
+}
+
+.chart__content-part {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Для всех элементов с фиксированной шириной */
+.header__city-search,
+.overview__small-item,
+.overview__forecast,
+.chart__content-part {
+  max-width: 100%;
+  box-sizing: border-box;
+}
