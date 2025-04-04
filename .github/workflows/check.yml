@@ -84,7 +84,7 @@ jobs:
         if: always()
         with:
           name: allure-report
-          path: ./ui_test/target/allure-results/
+          path: ./ui_test/target/allure-report/index.html
           retention-days: 7
 
       # 7. Cleanup
