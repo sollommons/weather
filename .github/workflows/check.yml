@@ -1,57 +1,73 @@
-name: UI Tests with Selenide
+name: UI Tests with Selenide and Allure Report
+
 on: 
   push:
+    branches: [ main ]
   pull_request:
-  workflow_dispatch:  {}
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # 1. Подготовка
-      - name: Checkout code
+      # 1. Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Запуск и проверка фронтенда
+      # 2. Start frontend server
       - name: Start Frontend
         working-directory: ./frontend
         run: |
           npm install
           npm start &
-          sleep 15
+          sleep 15  # Wait for server to start
 
-      # 3. Настройка Java 23
+      # 3. Setup Java 17 (more stable with Selenide)
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '23'
+          java-version: '17'
           distribution: 'temurin'
 
-      # 4. Установка Chrome
+      # 4. Install Chrome browser
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 'latest'
 
-      # 5. Запуск тестов
+      # 5. Run tests with Allure recording
       - name: Run Tests
         working-directory: ./ui_test
-        run: mvn clean test
+        run: |
+          mvn clean test -Dallure.results.directory=target/allure-results
 
-      # 6. Генерация Allure-отчёта
+      # 6. Save Allure results
+      - name: Archive Allure Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results
+          path: ./ui_test/target/allure-results/
+          retention-days: 3
+
+      # 7. Generate HTML report
       - name: Generate Allure Report
         working-directory: ./ui_test
         if: always()
-        run: mvn allure:report
+        run: |
+          mvn allure:report
 
-      # 7. Публикация отчёта
+      # 8. Upload HTML report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: allure-report
-          path: ./ui_test/target/site/allure-maven-plugin/
+          path: ./ui_test/target/allure-report/
+          retention-days: 3
 
-      # 8. Остановка фронтенда (опционально)
+      # 9. Stop frontend server
       - name: Stop Frontend
         if: always()
         run: pkill -f "npm start" || true
