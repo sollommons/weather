@@ -40,6 +40,7 @@ jobs:
 
       # 6. Генерация Allure-отчёта
       - name: Generate Allure Report
+        working-directory: ./ui_test
         if: always()
         run: mvn allure:report
 
