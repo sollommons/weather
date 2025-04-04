@@ -2,9 +2,7 @@ name: UI Tests with Selenide and Allure Report
 
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -39,14 +37,6 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 'latest'
-          
-      - name: Cache WebDriver
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/selenide
-          key: ${{ runner.os }}-webdriver-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-webdriver-
 
       # 5. Run tests with optimized Selenide config
       - name: Run Tests
