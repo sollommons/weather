@@ -90,7 +90,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: allure-results
-          path: ./ui_test/target/allure-results
+          path: ./ui_test/allure-results
 
       - name: Set up Java
         uses: actions/setup-java@v3
