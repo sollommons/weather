@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.example.elements.SearchString;
-import com.example.pages.BasePage;
 import com.example.pages.GitHubPage;
 import io.qameta.allure.Allure;
 import static com.codeborne.selenide.Selenide.switchTo;

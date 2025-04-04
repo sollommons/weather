@@ -1,7 +1,5 @@
 package com.example.pages;
 
-import static com.codeborne.selenide.Condition.cssClass;
-import static com.codeborne.selenide.Selenide.$;
 import com.example.elements.InfoBlock;
 import com.example.elements.SearchString;
 import com.example.elements.StatisticBlock;
