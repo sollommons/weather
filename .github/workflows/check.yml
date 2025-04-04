@@ -13,6 +13,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    name: Building and Running Tests
     timeout-minutes: 15
     
     steps:
@@ -66,10 +67,9 @@ jobs:
           mkdir -p allure-results
           [ -d target/allure-results ] && cp -r target/allure-results/* allure-results/ || echo "No allure results found"
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: allure-results
-          path: ./ui_test/allure-results/
+          path: allure-results
           retention-days: 3
 
       # 8. Cleanup
@@ -86,17 +86,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download allure results
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results
-          path: ./ui_test/allure-results
-
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Download allure results
+        uses: actions/download-artifact@v3
 
       - name: Generate Allure Report
         working-directory: ./ui_test
@@ -106,28 +103,25 @@ jobs:
       - name: Archive Allure Report
         run: |
           mkdir -p allure-report
-          cp -r ./ui_test/target/allure-report/* public/
+          cp -r ./ui_test/target/allure-report/* _site
           
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: ./public
-          retention-days: 7
+          name: _site
+          path:
+            _site
+          retention-days: 1
 
   publish-report:
     runs-on: ubuntu-latest
     needs: generate-report
-    name: Publish Report to GitHub Pages
+    name: Report publication
     steps:
-      - name: Download Allure Report
+      - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-        with:
-          name: allure-report
-          path: ./public
-
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          target_path: ./public
+        id: deployment
+        uses: actions/deploy-pages@v1.2.9
