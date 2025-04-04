@@ -1,15 +1,17 @@
 name: UI Tests with Selenide and Allure Report
 
-on: 
+on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
     steps:
       # 1. Checkout code
       - name: Checkout repository
@@ -19,31 +21,51 @@ jobs:
       - name: Start Frontend
         working-directory: ./frontend
         run: |
-          npm install
-          npm start &
-          sleep 15  # Wait for server to start
+          npm ci
+          npm start > frontend.log 2>&1 &
+          sleep 15
+          curl --retry 5 --retry-delay 3 --retry-all-errors http://localhost:5173 || cat frontend.log
 
-      # 3. Setup Java 17 (more stable with Selenide)
+      # 3. Setup Java 17
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'maven'
 
-      # 4. Install Chrome browser
-      - name: Install Chrome
+      # 4. Install Chrome and WebDriver
+      - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 'latest'
+          
+      - name: Cache WebDriver
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/selenide
+          key: ${{ runner.os }}-webdriver-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-webdriver-
 
-      # 5. Run tests with Allure recording
+      # 5. Run tests with optimized Selenide config
       - name: Run Tests
         working-directory: ./ui_test
+        env:
+          SELENIDE_BROWSER: "chrome"
+          SELENIDE_TIMEOUT: "15000"
         run: |
-          mvn clean test -Dallure.results.directory=target/allure-results
+          mvn clean test \
+            -Dselenide.headless=true \
+            -Dselenide.browser=$SELENIDE_BROWSER \
+            -Dselenide.timeout=$SELENIDE_TIMEOUT \
+            -Dselenide.pageLoadStrategy=normal \
+            -Dchromeoptions.args='--disable-dev-shm-usage,--no-sandbox,--disable-gpu,--window-size=1366,768' \
+            -Dwebdriver.chrome.whitelistedIps="" \
+            -Dallure.results.directory=target/allure-results
 
-      # 6. Save Allure results
-      - name: Archive Allure Results
+      # 6. Process test results
+      - name: Save Allure Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -51,23 +73,23 @@ jobs:
           path: ./ui_test/target/allure-results/
           retention-days: 3
 
-      # 7. Generate HTML report
       - name: Generate Allure Report
         working-directory: ./ui_test
-        if: always()
+        if: success() || failure()
         run: |
           mvn allure:report
 
-      # 8. Upload HTML report
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: allure-report
-          path: ./ui_test/target/allure-report/
-          retention-days: 3
+          path: ./ui_test/target/allure-results/
+          retention-days: 7
 
-      # 9. Stop frontend server
+      # 7. Cleanup
       - name: Stop Frontend
         if: always()
-        run: pkill -f "npm start" || true
+        run: |
+          pkill -f "npm start" || true
+          pkill -f "chrome" || true
