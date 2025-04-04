@@ -45,7 +45,7 @@ jobs:
 
       # 7. Публикация отчёта
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: ./ui_test/target/site/allure-maven-plugin/
