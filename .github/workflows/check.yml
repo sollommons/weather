@@ -1,0 +1,56 @@
+name: UI Tests with Selenide
+on: 
+  push:
+  pull_request:
+  workflow_dispatch:  {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Подготовка
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Запуск и проверка фронтенда
+      - name: Start Frontend
+        working-directory: ./frontend
+        run: |
+          npm install
+          npm start &
+          sleep 15
+
+      # 3. Настройка Java 23
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+
+      # 4. Установка Chrome
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'latest'
+
+      # 5. Запуск тестов
+      - name: Run Tests
+        working-directory: ./ui_test
+        run: mvn clean test
+
+      # 6. Генерация Allure-отчёта
+      - name: Generate Allure Report
+        if: always()
+        run: mvn allure:report
+
+      # 7. Публикация отчёта
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: ./ui_test/target/site/allure-maven-plugin/
+
+      # 8. Остановка фронтенда (опционально)
+      - name: Stop Frontend
+        if: always()
+        run: pkill -f "npm start" || true
