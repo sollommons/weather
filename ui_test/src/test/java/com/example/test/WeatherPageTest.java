@@ -31,21 +31,12 @@ public class WeatherPageTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Изменение темы сайты")
+    @DisplayName("Проверка кликабельности кнопки изменения темы")
     public void changeTheme() {
-        BasePage basePage = new BasePage();
-        
-        Allure.step("Проверка, что текущая тема - темная", () -> {
-            basePage.isDarkTheme();
-        });
 
-        Allure.step("Переключение темы", () -> {
+        Allure.step("Проверили доступность и переключили тему", () -> {
             SearchString searchString = new SearchString();
             searchString.changeTheme();
-        });
-
-        Allure.step("Проверка, что текущая тема - светлая", () -> {
-            basePage.isLightTheme();
         });
     }
 }

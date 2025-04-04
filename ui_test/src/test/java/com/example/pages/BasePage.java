@@ -19,14 +19,4 @@ public class BasePage implements LoadablePage {
         statisticBlock.checkUI();
         return true;
     }
-
-    public boolean isDarkTheme() {
-        $("body").shouldHave(cssClass("dark-theme")); 
-        return true;
-    }
-    
-    public boolean isLightTheme() {
-        $("html").shouldNotHave(cssClass("dark-theme"));
-        return true;
-    }
 }
