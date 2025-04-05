@@ -21,6 +21,7 @@ jobs:
       - name: Running unit-tests
         working-directory: ./frontend
         run: |
+          npm ci
           npm run test
 
   test:
