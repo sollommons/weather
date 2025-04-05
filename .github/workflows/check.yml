@@ -26,7 +26,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    name: Building and Running Tests
+    name: UI-tests and Report
     needs: unit-test
     timeout-minutes: 15
     
