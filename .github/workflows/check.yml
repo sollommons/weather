@@ -6,14 +6,27 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    name: Unit-tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Running unit-tests
+        working-directory: ./frontend
+        run: |
+          npm run test
+
   test:
     runs-on: ubuntu-latest
     name: Building and Running Tests
+    needs: unit-test
     timeout-minutes: 15
     
     steps:
